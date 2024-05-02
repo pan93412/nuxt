@@ -161,6 +161,18 @@ export default defineUntypedSchema({
   },
 
   /**
+   * A unique identifier matching the build. This may contain the hash of the current state of the project
+   */
+  buildId: {
+    $resolve: async (val, get) => {
+      const [isDev, isTest] = await Promise.all([get('dev') as Promise<boolean>, get('test') as Promise<boolean>])
+      if (isDev) { return 'dev' }
+      if (isTest) { return 'test' }
+      return randomUUID()
+    },
+  },
+
+  /**
    * Define the directory where your built Nuxt files will be placed.
    *
    * Many tools assume that `.nuxt` is a hidden directory (because it starts
