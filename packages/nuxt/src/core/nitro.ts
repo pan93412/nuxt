@@ -234,7 +234,7 @@ export async function initNitro (nuxt: Nuxt & { _nitro?: Nitro }) {
 
   // Add app manifest handler and prerender configuration
   if (nuxt.options.experimental.appManifest) {
-    const manifestBuildId = nuxt.options.runtimeConfig.app.buildId ||= nuxt.options.buildId
+    const manifestBuildId = nuxt.options.runtimeConfig.app.buildId ||= (nuxt.options.dev ? 'dev' : nuxt.options.test ? 'test' : nuxt.options.buildId)
     const buildTimestamp = Date.now()
 
     const manifestPrefix = joinURL(nuxt.options.app.buildAssetsDir, 'builds')
