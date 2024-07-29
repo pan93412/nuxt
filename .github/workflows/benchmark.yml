@@ -46,7 +46,7 @@ jobs:
         run: pnpm build
 
       - name: Run benchmarks
-        uses: CodSpeedHQ/action@a58b84c0b61569a9cbb7cfb378cc849d65cf1ce5 # v2.4.3
+        uses: CodSpeedHQ/action@ce4674c9a7e4628edd2df5a3c8e4fbacc451a21c # v2.4.4
         with:
           run: pnpm vitest bench
           token: ${{ secrets.CODSPEED_TOKEN }}
